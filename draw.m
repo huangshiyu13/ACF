@@ -3,7 +3,7 @@ close all
 p = genpath('../toolbox');
 addpath(p);
 
-fid1=fopen('test.cfg');
+fid1=fopen('draw.cfg');
 groundtruth = '';
 testFiles={};
 testNames={};
@@ -22,10 +22,11 @@ end
 fclose(fid1);
 pLoad={'lbls',{'person'},'ilbls',{'people'}};
 [gt,dt] = bbGt( 'myLoadAll', groundtruth,testFiles{1},pLoad);
-% thr = 0.5;
-% [gt,dt] = bbGt('evalRes',gt,dt,thr,0);
-% 
-% [fp,tp] = bbGt('compRoc',gt,dt,1);
-% 
-% figure(1); plotRoc([fp tp]);
-% title('roc');
+
+thr = 0.5;
+[gt,dt] = bbGt('evalRes',gt,dt,thr,0);
+
+[fp,tp] = bbGt('compRoc',gt,dt,1);
+
+figure(1); plotRoc([fp tp]);
+title('roc');
