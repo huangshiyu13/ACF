@@ -6,13 +6,13 @@ cd = '/home/intern/Desktop/ATOCAR/DATA/dangerous/resized/';
 
 images = dir(fullfile(cd,'*.jpg'));
 len = size(images,1);
-outPath = 'result/AcfCaltechPureOrigin/imgResult/';
+outPath = 'result/MixOrigin/imgResult/';
 if (exist(outPath,'dir')),
    rmdir(outPath,'s'); 
 end
 mkdir(outPath);
 
-bboutDir = 'result/AcfCaltechPureOrigin/bbout/';
+bboutDir = 'result/MixOrigin/bbout/';
 if (exist(bboutDir,'dir')),
    rmdir(bboutDir,'s'); 
 end
@@ -29,7 +29,7 @@ mkdir(bboutDir);
 %   'gtDir','/home/intern/Desktop/ATOCAR/DATA/INRIAPerson/test/images','pLoad',opts.pLoad,...
 %   'pModify',pModify,'reapply',0,'show',2);
 % load ./models/SyntheticOriginDetector.mat;
-load models/AcfCaltechPureOriginDetector.mat;
+load models/MixOriginDetector.mat;
 for i = 1:len
     fileName = images(i).name;
     fileName
