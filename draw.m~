@@ -1,0 +1,58 @@
+clear all
+close all
+p = genpath('../toolbox');
+addpath(p);
+
+fid1=fopen('draw.cfg');
+groundtruth = '';
+testFiles={};
+testNames={};
+i = 0;
+while ~feof(fid1)
+    aline=fgetl(fid1);
+    if i == 0,
+        groundtruth = aline;
+    else
+       strs = regexp(aline, ' ', 'split');
+       testFiles{i} = strs{1}; 
+       testNames{i} = strs{2};
+    end
+    i=i+1;
+end
+fclose(fid1);
+pLoad={'lbls',{'person'},'ilbls',{'people'}};
+
+figure(1); 
+for i = 1:size(testFiles,1)
+[gt,dt] = bbGt( 'myLoadAll', groundtruth,testFiles{1},pLoad);
+
+thr = 0.5;
+[gt,dt] = bbGt('evalRes',gt,dt,thr,0);
+
+[fp,ts] = bbGt('compRoc',gt,dt,1);
+
+ys = 1 - ys;
+figure(1)
+plot(xs,ys,'b-','LineWidth',3);
+set(gca,'XScale','log','YScale','log',...
+    'XMinorGrid','on','XMinorTic','on',...
+    'YMinorGrid','on','YMinorTic','on');
+title('ROC');
+xlim([0 10]);
+ylim([0 1]);
+xlabel('false positives per image','FontSize',14);
+ylabel('miss rate','FontSize',14);
+
+legend('YOLOp_n1');
+saveas(gcf,'roc_yolop_n1.jpg');
+
+[xs2,ys2,ref] = bbGt( 'compRoc', gt, dt, 0 );
+figure(2)
+plot(xs2,ys2,'r-','LineWidth',3);
+xlabel('Recall','FontSize',14); ylabel('Precision','FontSize',14);
+title('Precision Recall');
+grid on;
+legend('YOLOp_n1');
+saveas(gcf,'pr_yolop_n1.jpg');
+
+end

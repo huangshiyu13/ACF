@@ -6,13 +6,13 @@ cd = '/home/intern/Desktop/ATOCAR/DATA/dangerous/resized/';
 
 images = dir(fullfile(cd,'*.jpg'));
 len = size(images,1);
-outPath = 'result/AcfCaltechPureOrigin/imgResult/';
+outPath = 'result/dangerous/imgResult/';
 if (exist(outPath,'dir')),
    rmdir(outPath,'s'); 
 end
 mkdir(outPath);
 
-bboutDir = 'result/AcfCaltechPureOrigin/bbout/';
+bboutDir = 'result/dangerous/bbout/';
 if (exist(bboutDir,'dir')),
    rmdir(bboutDir,'s'); 
 end
@@ -29,19 +29,19 @@ mkdir(bboutDir);
 %   'gtDir','/home/intern/Desktop/ATOCAR/DATA/INRIAPerson/test/images','pLoad',opts.pLoad,...
 %   'pModify',pModify,'reapply',0,'show',2);
 % load ./models/SyntheticOriginDetector.mat;
-load models/AcfCaltechPureOriginDetector.mat;
+load models/dangerousDetector.mat;
 for i = 1:len
     fileName = images(i).name;
     fileName
-    in  = [cd '/' fileName];
+    in  = [cdfileName];
     out = [outPath '/' fileName];
     I = imread(in);
     
     bboxes = acfDetect(I,detector);
     [~,nameNow,~] = fileparts(fileName);
-    saveBBX(bboxes,[bboutDir '/' nameNow '.txt']);
-%     figure('visible','off'); 
-%     im(I); 
-%     bbApply('draw',bboxes);
-%     saveas(gcf,out);
+    saveBBX(bboxes,[bboutDir nameNow]);
+    figure('visible','off'); 
+    im(I); 
+    bbApply('draw',bboxes);
+    saveas(gcf,out);
 end
