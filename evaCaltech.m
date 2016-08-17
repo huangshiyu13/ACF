@@ -4,11 +4,15 @@ p = genpath('../../DATA/code3.2.1');
 addpath(p);
 clear all;
 
-resDir = '/Users/shiyuhuang/Desktop/results/UsaTest';
+resDir = '/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/UsaTest/';
 resfiles = {'ev-Reasonable-ACF-Caltech.mat',...
-            'ev-Reasonable-SA-FastRCNN.mat'};
-types = {'r-','b-'};
+            'ev-Reasonable-SA-FastRCNN.mat',...
+            'ev-MixOrigin.mat',...
+            'ev-AcfCaltechPureOrigin.mat'};
+types = {'r-','b-','g-','r--'};
+
 n = length(resfiles);
+assert(n == length(types));
 res=cell(1,n);
 names = cell(1,n);
 gts = cell(1,n);

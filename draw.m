@@ -3,7 +3,7 @@ close all
 p = genpath('../toolbox');
 addpath(p);
 
-fid1=fopen('draw.cfg');
+fid1=fopen('configure/draw.cfg');
 groundtruth = '';
 testFiles={};
 testNames={};
@@ -33,7 +33,7 @@ for i = 1:size(testFiles,2)
     [xs,ys] = bbGt('compRoc',gt,dt,1);
     ys = 1 - ys;
     hold on;
-    p{i} = plot(xs,ys,type{i},'LineWidth',3);
+    plot(xs,ys,type{i},'LineWidth',3);
     set(gca,'XScale','log','YScale','log',...
         'XMinorGrid','on','XMinorTic','on',...
         'YMinorGrid','on','YMinorTic','on');

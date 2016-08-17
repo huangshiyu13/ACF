@@ -3,16 +3,17 @@ addpath(p);
 p = genpath('../../DATA/code3.2.1');
 addpath(p);
 clear all;
-
+common = 'AcfCaltechPureOrigin';
 imgDir = '/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/Caltech/test/images/';
-saveName = '/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/UsaTest/dt-MixOrigin.mat';
-evasaveName = '/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/UsaTest/ev-MixOrigin.mat';
-stra='MixOrigin'; 
+saveName = ['/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/UsaTest/dt-' common '.mat'];
+evasaveName = ['/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/UsaTest/ev-' common '.mat'];
+stra=common; 
 stre='';
 images = dir(fullfile(imgDir,'*.jpg'));
 len = size(images,1);
 
-load models/MixOriginDetector.mat;
+A = load(['models/' common 'Detector.mat']);
+detector = A.detector;
 dt = cell(1,len);
 aspectRatio = .41;
 for i = 1:len
