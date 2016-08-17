@@ -1,0 +1,49 @@
+p = genpath('../toolbox');
+addpath(p);
+p = genpath('../../DATA/code3.2.1');
+addpath(p);
+clear all;
+
+imgDir = '/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/Caltech/test/images/';
+saveName = '/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/UsaTest/dt-MixOrigin.mat';
+images = dir(fullfile(imgDir,'*.jpg'));
+len = size(images,1);
+
+load models/MixOriginDetector.mat;
+dt = cell(1,len);
+aspectRatio = .41;
+for i = 1:len
+    if mod(i,10) == 0, disp([i len]); end
+    fileName = images(i).name;
+    in  = [imgDir '/' fileName];
+    I = imread(in);
+    bboxes = acfDetect(I,detector);
+    bboxes=bbApply('resize',bboxes,0,0,aspectRatio); 
+    dt{i}=bboxes;
+end
+
+save(saveName,'dt','-v6');
+
+gt =  load('/Users/shiyuhuang/Desktop/results/UsaTest/gt-Reasonable.mat');
+gt = gt.gt;
+dt = load(saveName);
+dt = dt.dt;
+
+thr = 0.5;
+[gt,dt] = bbGt('evalRes',gt,dt,thr,0);
+[xs,ys] = bbGt('compRoc',gt,dt,1);
+ ys = 1 - ys;
+ plot(xs,ys,'LineWidth',3);
+ set(gca,'XScale','log','YScale','log',...
+        'XMinorGrid','on','XMinorTic','on',...
+        'YMinorGrid','on','YMinorTic','on');
+    title('ROC');
+    xlim([0 10]);
+    ylim([0 1]);
+    xlabel('false positives per image','FontSize',14);
+    ylabel('miss rate','FontSize',14);
+    legend('test');
+    
+    [gtr,dtr] = bbGt('evalRes',gt,dt,exps(g).overlap);
+    R=struct('stra',stra,'stre',stre,'gtr',{gtr},'dtr',{dtr});
+    res(g,d)=R; save(fName,'R');

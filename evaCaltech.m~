@@ -1,0 +1,64 @@
+p = genpath('../toolbox');
+addpath(p);
+p = genpath('../../DATA/code3.2.1');
+addpath(p);
+clear all;
+
+resDir = '/Users/shiyuhuang/Desktop/results/UsaTest';
+resfiles = {'ev-Reasonable-ACF-Caltech.mat','ev-Reasonable-SA-FastRCNN.mat'};
+types = {'r-','b-'};
+n = ;em
+res=cell(1,length(names));
+names = cell(1,length(names));
+gts = cell(1,length(names));
+dts = cell(1,length(names));
+
+for i = 1:length(names)
+    res{i} = load([resDir '/' names{i}]);
+    names{i} = res{i}.R.stra;
+    gts{i} = res{i}.R.gtr;
+    dts{i} = res{i}.R.dtr;
+end
+
+for i = 1:length(names)
+    [xs,ys] = bbGt('compRoc',gts{i},dts{i},1);
+    ys = 1 - ys;
+    hold on;
+    plot(xs,ys,types{i},'LineWidth',3);
+    set(gca,'XScale','log','YScale','log',...
+        'XMinorGrid','on','XMinorTic','on',...
+        'YMinorGrid','on','YMinorTic','on');
+    title('ROC');
+    xlim([0 10]);
+    ylim([0 1]);
+    xlabel('false positives per image','FontSize',14);
+    ylabel('miss rate','FontSize',14);
+end
+legend(testNames);
+saveas(gcf,'images/test.jpg');
+
+% groundtruth = '../../DATA/Caltech/Caltech/test/annotations';
+% dtName = '/Users/shiyuhuang/Desktop/results/UsaTest/dt-SA-FastRCNN.mat';
+% pLoad={'lbls',{'person'},'ilbls',{'people'}};
+% gt =  load('/Users/shiyuhuang/Desktop/results/UsaTest/gt-Reasonable.mat');%bbGt( 'loadCaltechGT', groundtruth,pLoad);
+% gt = gt.gt;
+% dt = load(dtName);
+% dt = dt.dt;
+% % dt =  bbGt( 'loadCaltechDT', testFile,pLoad);
+%  thr = 0.5;
+%  [gt,dt] = bbGt('evalRes',gt,dt,thr,0);
+% %  A = load('/Users/shiyuhuang/Desktop/results/UsaTest/ev-Reasonable-SA-FastRCNN.mat');
+% %  gt = A.R.gtr;
+% %  dt = A.R.dtr;
+%  [xs,ys] = bbGt('compRoc',gt,dt,1);
+%  ys = 1 - ys;
+%  plot(xs,ys,'LineWidth',3);
+%  set(gca,'XScale','log','YScale','log',...
+%         'XMinorGrid','on','XMinorTic','on',...
+%         'YMinorGrid','on','YMinorTic','on');
+%  title('ROC');
+% xlim([0 10]);
+% ylim([0 1]);
+% xlabel('false positives per image','FontSize',14);
+% ylabel('miss rate','FontSize',14);
+% legend('test');
