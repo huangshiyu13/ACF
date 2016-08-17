@@ -1,0 +1,14 @@
+p = genpath('../../../ATOCAR_MATLAB/toolbox');
+addpath(p);
+p = genpath('../../code3.2.1');
+addpath(p);
+clear all;
+groundtruth = '/home/intern/Desktop/ATOCAR/DATA/Caltech/Caltech/test/annotations';
+testFile = '/home/intern/Desktop/RPN+BF/RPN+BF';
+gt =  bbGt( 'loadCaltechGT', groundtruth);
+dt =  bbGt( 'loadCaltechDT', testFile);
+thr = 0.5;
+[gt,dt] = bbGt('evalRes',gt,dt,thr,0);
+[xs,ys] = bbGt('compRoc',gt,dt,1);
+ys = 1 - ys;
+p{i} = plot(xs,ys,'LineWidth',3);
