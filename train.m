@@ -30,11 +30,18 @@ fclose(fid1);
 
 %% set up opts for training detector (see acfTrain)
 if(0),
-opts=acfTrain(); opts.modelDs=[50 20.5]; opts.modelDsPad=[64 32];
-opts.pPyramid.pChns.pColor.smooth=0; opts.nWeak=[64 256 1024 4096];
-opts.pBoost.pTree.maxDepth=5; opts.pBoost.discrete=0;
-opts.pBoost.pTree.fracFtrs=1/16; opts.nNeg=25000; opts.nAccNeg=50000;
-opts.pPyramid.pChns.pGradHist.softBin=1; opts.pJitter=struct('flip',1);
+opts=acfTrain(); 
+opts.modelDs=[50 20.5]; 
+opts.modelDsPad=[64 32];
+opts.pPyramid.pChns.pColor.smooth=0; 
+opts.nWeak=[64 256 1024 4096];
+opts.pBoost.pTree.maxDepth=5; 
+opts.pBoost.discrete=0;
+opts.pBoost.pTree.fracFtrs=1/16; 
+opts.nNeg=25000; 
+opts.nAccNeg=50000;
+opts.pPyramid.pChns.pGradHist.softBin=1; 
+opts.pJitter=struct('flip',1);
 opts.posGtDir=[dataDir 'train' '/annotations'];
 opts.posImgDir=[dataDir 'train' '/images'];
 opts.pPyramid.pChns.shrink=2; 

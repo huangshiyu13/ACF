@@ -14,6 +14,8 @@ len = size(images,1);
 
 A = load(['models/' common 'Detector.mat']);
 detector = A.detector;
+pModify=struct('cascThr',-1,'cascCal',.025);
+detector=acfModify(detector,pModify);
 dt = cell(1,len);
 aspectRatio = .41;
 for i = 1:len

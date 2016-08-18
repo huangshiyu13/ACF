@@ -2,7 +2,7 @@ p = genpath('../toolbox');
 addpath(p);
 clear all;
 % cd = '/home/intern/Desktop/ATOCAR/DATA/INRIAPerson/test/images/';
-cd = '/home/intern/Desktop/ATOCAR/DATA/dangerous/resized/';
+cd = '../../DATA/dangerous/resized/';
 
 images = dir(fullfile(cd,'*.jpg'));
 len = size(images,1);
@@ -30,6 +30,8 @@ mkdir(bboutDir);
 %   'pModify',pModify,'reapply',0,'show',2);
 % load ./models/SyntheticOriginDetector.mat;
 load models/MixOriginDetector.mat;
+pModify=struct('cascThr',-100,'cascCal',.025);
+detector=acfModify(detector,pModify);
 for i = 1:len
     fileName = images(i).name;
     fileName
