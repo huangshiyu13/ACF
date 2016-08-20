@@ -3,16 +3,16 @@ addpath(p);
 clear all;
 % cd = '/home/intern/Desktop/ATOCAR/DATA/INRIAPerson/test/images/';
 cd = '../../DATA/dangerous/resized/';
-
+methodName = 'syntheticDataAll';
 images = dir(fullfile(cd,'*.jpg'));
 len = size(images,1);
-outPath = 'result/syntheticDataAll/imgResult/';
+outPath = ['result/' methodName '/imgResult/'];
 if (exist(outPath,'dir')),
    rmdir(outPath,'s'); 
 end
 mkdir(outPath);
 
-bboutDir = 'result/syntheticDataAll/bbout/';
+bboutDir = ['result/' methodName '/bbout/'];
 if (exist(bboutDir,'dir')),
    rmdir(bboutDir,'s'); 
 end
@@ -29,10 +29,11 @@ mkdir(bboutDir);
 %   'gtDir','/home/intern/Desktop/ATOCAR/DATA/INRIAPerson/test/images','pLoad',opts.pLoad,...
 %   'pModify',pModify,'reapply',0,'show',2);
 % load ./models/SyntheticOriginDetector.mat;
-load models/syntheticDataAllDetector.mat;
+D = load( ['models/' methodName 'Detector.mat']);
+detector = D.detector;
 pModify=struct('cascThr',-1,'cascCal',.025);
 detector=acfModify(detector,pModify);
-parfor i = 1:len
+for i = 1:len
     fileName = images(i).name;
     fileName
     in  = [cd '/' fileName];
@@ -42,8 +43,10 @@ parfor i = 1:len
     bboxes = acfDetect(I,detector);
     [~,nameNow,~] = fileparts(fileName);
     saveBBX(bboxes,[bboutDir '/' nameNow '.txt']);
-%     figure('visible','off'); 
-%     im(I); 
-%     bbApply('draw',bboxes);
-%     saveas(gcf,out);
+    figure('visible','off'); 
+    im(I); 
+    bbApply('draw',bboxes);
+    saveas(gcf,out);
 end
+
+
