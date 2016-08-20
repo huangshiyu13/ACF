@@ -18,9 +18,9 @@ pModify=struct('cascThr',-1,'cascCal',.025);
 detector=acfModify(detector,pModify);
 dt = cell(1,len);
 aspectRatio = .41;
-for i = 1:len
-    if mod(i,10) == 0, disp([i len]); end
+parfor i = 1:len
     fileName = images(i).name;
+    fileName
     in  = [imgDir '/' fileName];
     I = imread(in);
     bboxes = acfDetect(I,detector);

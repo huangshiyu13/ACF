@@ -1,0 +1,46 @@
+---------------------------------------------------------------------------
+Training stage 0
+Sampled 7 windows from 7 images.
+Done sampling windows (time=2s).
+Computing lambdas... done (time=1s).
+Extracting features... done (time=0s).
+Sampled 175 windows from 7 images.
+Done sampling windows (time=1s).
+Extracting features... done (time=0s).
+Training AdaBoost: nWeak= 64 nFtrs=5120 pos=14 neg=175
+ i=  16 alpha=1.000 err=0.000 loss=1.60e-28
+ stopping early
+Done training err=0.0000 fp=0.0000 fn=0.0000 (t=0.3s).
+Done training stage 0 (time=5s).
+---------------------------------------------------------------------------
+Training stage 1
+Sampled 15 windows from 7 images.
+Done sampling windows (time=1s).
+Extracting features... done (time=0s).
+Training AdaBoost: nWeak=256 nFtrs=5120 pos=14 neg=190
+ i=  16 alpha=1.000 err=0.000 loss=1.60e-28
+ stopping early
+Done training err=0.0000 fp=0.0000 fn=0.0000 (t=0.1s).
+Done training stage 1 (time=1s).
+---------------------------------------------------------------------------
+Training stage 2
+Sampled 3 windows from 7 images.
+Done sampling windows (time=0s).
+Extracting features... done (time=0s).
+Training AdaBoost: nWeak=1024 nFtrs=5120 pos=14 neg=193
+ i=  16 alpha=1.000 err=0.000 loss=1.60e-28
+ stopping early
+Done training err=0.0000 fp=0.0000 fn=0.0000 (t=0.1s).
+Done training stage 2 (time=1s).
+---------------------------------------------------------------------------
+Training stage 3
+Sampled 3 windows from 7 images.
+Done sampling windows (time=1s).
+Extracting features... done (time=0s).
+Training AdaBoost: nWeak=4096 nFtrs=5120 pos=14 neg=196
+ i=  16 alpha=1.000 err=0.000 loss=1.60e-28
+ stopping early
+Done training err=0.0000 fp=0.0000 fn=0.0000 (t=0.1s).
+Done training stage 3 (time=1s).
+---------------------------------------------------------------------------
+Done training (time=8s).
