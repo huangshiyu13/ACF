@@ -22,10 +22,12 @@ while ~feof(fid1)
     i=i+1;
 end
 fclose(fid1);
-pLoad={'lbls',{'person'},'ilbls',{'people'}};
+pLoad={'lbls',{'person'},'ilbls',{'people'},'squarify',{3,.41},'hRng',[50 inf]};
 p = {};
 figure(1)
-
+yMin = 100;
+xMax = 0;
+grid on;
 for i = 1:size(testFiles,2)
     [gt,dt] = bbGt( 'myLoadAll', groundtruth,testFiles{i},pLoad);
     thr = 0.5;
@@ -34,14 +36,20 @@ for i = 1:size(testFiles,2)
     ys = 1 - ys;
     hold on;
     plot(xs,ys,type{i},'LineWidth',3);
-    set(gca,'XScale','log','YScale','log',...
-        'XMinorGrid','on','XMinorTic','on',...
-        'YMinorGrid','on','YMinorTic','on');
-    title('ROC');
-    xlim([0 10]);
-    ylim([0 1]);
+    yMin=min(yMin,min(ys)); 
+    xMax=max(xMax,max(xs));
     xlabel('false positives per image','FontSize',14);
     ylabel('miss rate','FontSize',14);
 end
-legend(testNames);
+yt=[.05 .1:.1:.5 .64 .8]; ytStr=int2str2(yt*100,2);
+for i=1:length(yt), ytStr{i}=['.' ytStr{i}]; end
+set(gca,'XScale','log','YScale','log',...
+        'YTick',[yt 1],'YTickLabel',[ytStr '1'],...
+        'XMinorGrid','off','XMinorTic','off',...
+        'YMinorGrid','off','YMinorTic','off');
+title('ROC');
+xlim([0 xMax]);
+ylim([yMin, 1]);
+
+legend(testNames,'Location','sw');
 saveas(gcf,'test.jpg');

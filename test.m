@@ -3,7 +3,7 @@ addpath(p);
 clear all;
 % cd = '/home/intern/Desktop/ATOCAR/DATA/INRIAPerson/test/images/';
 cd = '../../DATA/dangerous/resized/';
-methodName = 'syntheticDataAll';
+methodName = 'MixAll';
 images = dir(fullfile(cd,'*.jpg'));
 len = size(images,1);
 outPath = ['result/' methodName '/imgResult/'];
