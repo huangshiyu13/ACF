@@ -37,16 +37,16 @@ for i = 1:len
     fileName = images(i).name;
     fileName
     in  = [cd '/' fileName];
-    out = [outPath '/' fileName];
     I = imread(in);
-    
     bboxes = acfDetect(I,detector);
     [~,nameNow,~] = fileparts(fileName);
     saveBBX(bboxes,[bboutDir '/' nameNow '.txt']);
-    figure('visible','off'); 
-    im(I); 
-    bbApply('draw',bboxes);
-    saveas(gcf,out);
+    
+%     figure('visible','off'); 
+%     im(I); 
+%     bbApply('draw',bboxes);
+%     out = [outPath '/' fileName];
+%     saveas(gcf,out);
 end
 
 
