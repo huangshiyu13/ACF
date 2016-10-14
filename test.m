@@ -2,17 +2,17 @@ p = genpath('../toolbox');
 addpath(p);
 clear all;
 % cd = '/home/intern/Desktop/ATOCAR/DATA/INRIAPerson/test/images/';
-cd = '../../DATA/dangerous/resized/';
-methodName = 'MixAll';
+cd = '../../DATA/dangerousFinal/allResized';
+methodName = 'AcfCaltechPureOrigin';
 images = dir(fullfile(cd,'*.jpg'));
 len = size(images,1);
-outPath = ['result/' methodName '/imgResult/'];
+outPath = ['result/' methodName 'all/imgResult/'];
 if (exist(outPath,'dir')),
    rmdir(outPath,'s'); 
 end
 mkdir(outPath);
 
-bboutDir = ['result/' methodName '/bbout/'];
+bboutDir = ['result/' methodName 'all/bbout/'];
 if (exist(bboutDir,'dir')),
    rmdir(bboutDir,'s'); 
 end

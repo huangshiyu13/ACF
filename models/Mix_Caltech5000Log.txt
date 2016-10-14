@@ -206,4 +206,66 @@ Training AdaBoost: nWeak=4096 nFtrs=5120 pos=21822 neg=50000
  i=1408 alpha=1.000 err=0.372 loss=2.36e-24
  i=1424 alpha=1.000 err=0.381 loss=1.26e-24
  i=1440 alpha=1.000 err=0.389 loss=6.71e-25
- i=1456 alpha=1.000 err=0.373 loss=3
+ i=1456 alpha=1.000 err=0.373 loss=3.48e-25
+ i=1472 alpha=1.000 err=0.375 loss=1.90e-25
+ i=1488 alpha=1.000 err=0.372 loss=1.00e-25
+ i=1504 alpha=1.000 err=0.365 loss=5.48e-26
+ i=1520 alpha=1.000 err=0.369 loss=2.90e-26
+ i=1536 alpha=1.000 err=0.378 loss=1.56e-26
+ i=1552 alpha=1.000 err=0.372 loss=8.30e-27
+ i=1568 alpha=1.000 err=0.382 loss=4.48e-27
+ i=1584 alpha=1.000 err=0.368 loss=2.49e-27
+ i=1600 alpha=1.000 err=0.393 loss=1.37e-27
+ i=1616 alpha=1.000 err=0.374 loss=7.50e-28
+ i=1632 alpha=1.000 err=0.369 loss=4.14e-28
+ i=1648 alpha=1.000 err=0.373 loss=2.19e-28
+ i=1664 alpha=1.000 err=0.381 loss=1.19e-28
+ i=1680 alpha=1.000 err=0.376 loss=6.33e-29
+ i=1696 alpha=1.000 err=0.371 loss=3.40e-29
+ i=1712 alpha=1.000 err=0.358 loss=1.81e-29
+ i=1728 alpha=1.000 err=0.376 loss=9.76e-30
+ i=1744 alpha=1.000 err=0.372 loss=5.25e-30
+ i=1760 alpha=1.000 err=0.377 loss=2.82e-30
+ i=1776 alpha=1.000 err=0.374 loss=1.53e-30
+ i=1792 alpha=1.000 err=0.392 loss=8.17e-31
+ i=1808 alpha=1.000 err=0.370 loss=4.37e-31
+ i=1824 alpha=1.000 err=0.365 loss=2.28e-31
+ i=1840 alpha=1.000 err=0.387 loss=1.20e-31
+ i=1856 alpha=1.000 err=0.375 loss=6.41e-32
+ i=1872 alpha=1.000 err=0.368 loss=3.47e-32
+ i=1888 alpha=1.000 err=0.374 loss=1.83e-32
+ i=1904 alpha=1.000 err=0.381 loss=9.64e-33
+ i=1920 alpha=1.000 err=0.377 loss=5.21e-33
+ i=1936 alpha=1.000 err=0.377 loss=2.78e-33
+ i=1952 alpha=1.000 err=0.394 loss=1.51e-33
+ i=1968 alpha=1.000 err=0.378 loss=8.09e-34
+ i=1984 alpha=1.000 err=0.383 loss=4.40e-34
+ i=2000 alpha=1.000 err=0.379 loss=2.42e-34
+ i=2016 alpha=1.000 err=0.374 loss=1.30e-34
+ i=2032 alpha=1.000 err=0.390 loss=7.06e-35
+ i=2048 alpha=1.000 err=0.371 loss=3.77e-35
+ i=2064 alpha=1.000 err=0.379 loss=1.97e-35
+ i=2080 alpha=1.000 err=0.375 loss=1.04e-35
+ i=2096 alpha=1.000 err=0.376 loss=5.63e-36
+ i=2112 alpha=1.000 err=0.372 loss=3.00e-36
+ i=2128 alpha=1.000 err=0.386 loss=1.61e-36
+ i=2144 alpha=1.000 err=0.395 loss=8.70e-37
+ i=2160 alpha=1.000 err=0.383 loss=4.67e-37
+ i=2176 alpha=1.000 err=0.374 loss=2.53e-37
+ i=2192 alpha=1.000 err=0.381 loss=1.40e-37
+ i=2208 alpha=1.000 err=0.379 loss=7.59e-38
+ i=2224 alpha=1.000 err=0.369 loss=4.05e-38
+ i=2240 alpha=1.000 err=0.369 loss=2.15e-38
+ i=2256 alpha=1.000 err=0.368 loss=1.16e-38
+ i=2272 alpha=1.000 err=0.367 loss=6.23e-39
+ i=2288 alpha=1.000 err=0.372 loss=3.39e-39
+ i=2304 alpha=1.000 err=0.382 loss=1.88e-39
+ i=2320 alpha=1.000 err=0.363 loss=9.97e-40
+ i=2336 alpha=1.000 err=0.383 loss=5.42e-40
+ i=2352 alpha=1.000 err=0.393 loss=2.97e-40
+ i=2368 alpha=1.000 err=0.388 loss=1.59e-40
+ stopping early
+Done training err=0.0000 fp=0.0000 fn=0.0000 (t=2776.0s).
+Done training stage 3 (time=30826s).
+---------------------------------------------------------------------------
+Done training (time=36644s).

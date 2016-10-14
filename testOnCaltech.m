@@ -3,10 +3,10 @@ addpath(p);
 p = genpath('../../DATA/code3.2.1');
 addpath(p);
 clear all;
-common = 'AcfCaltechPureOrigin';
+common = 'Caltech2500';
 imgDir = '/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/Caltech/test/images/';
-saveName = ['/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/UsaTest/dt-' common '.mat'];
-evasaveName = ['/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/UsaTest/ev-' common '.mat'];
+saveName = ['/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/res/dt-' common '.mat'];
+evasaveName = ['/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/res/ev-' common '.mat'];
 stra=common; 
 stre='';
 images = dir(fullfile(imgDir,'*.jpg'));
@@ -30,7 +30,7 @@ end
 
 save(saveName,'dt','-v6');
 
-gt =  load('/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/UsaTest/gt-Reasonable.mat');
+gt =  load('/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/res/gt-Reasonable.mat');
 gt = gt.gt;
 dt = load(saveName);
 dt = dt.dt;

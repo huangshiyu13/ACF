@@ -52,4 +52,4 @@ xlim([0 xMax]);
 ylim([yMin, 1]);
 
 legend(testNames,'Location','sw');
-saveas(gcf,'test.jpg');
+saveas(gcf,'images/testDangerous.jpg');
