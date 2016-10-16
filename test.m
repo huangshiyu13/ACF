@@ -2,7 +2,7 @@ p = genpath('../toolbox');
 addpath(p);
 clear all;
 % cd = '/home/intern/Desktop/ATOCAR/DATA/INRIAPerson/test/images/';
-cd = '../../DATA/dangerousFinal/allResized';
+cd = '../../DATA/dangerousFinal/allNowCropped';
 methodName = 'AcfCaltechPureOrigin';
 images = dir(fullfile(cd,'*.jpg'));
 len = size(images,1);
