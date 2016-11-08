@@ -4,11 +4,12 @@ p = genpath('../../DATA/code3.2.1');
 addpath(p);
 clear all
 close all
-resDir = '/Users/shiyuhuang/Downloads/ATOCAR/DATA/Caltech/res/';
+resDir = '../../DATA/Caltech/res/';
 resfiles = {'ev-Reasonable-ACF-Caltech.mat',...
             'ev-Mix_Caltech2500.mat',...
-            'ev-Caltech2500.mat'};
-types = {'r-','b-','g-'};
+            'ev-Caltech2500.mat',...
+            'ev-rpn_origin.mat'};
+types = {'r-','b-','g-','c-'};
 
 n = length(resfiles);
 assert(n == length(types));
