@@ -17,7 +17,7 @@ clear all;
 fid1=fopen('configure/train.cfg');
 
 dataDir=fgetl(fid1);%'../../DATA/dangerous/';
-testDir = fgetl(fid1);%'../../DATA/Caltech/';
+% testDir = fgetl(fid1);%'../../DATA/Caltech/';
 modelName=fgetl(fid1);
 trainLoad = fgetl(fid1);%'configure/trainFileLoad.cfg'
 fclose(fid1);
