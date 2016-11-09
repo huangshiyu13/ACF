@@ -35,8 +35,9 @@ pModify=struct('cascThr',-1,'cascCal',.025);
 detector=acfModify(detector,pModify);
 for i = 1:len
     fileName = images(i).name;
-    fileName
     in  = [cd '/' fileName];
+    i
+    in
     I = imread(in);
     bboxes = acfDetect(I,detector);
     [~,nameNow,~] = fileparts(fileName);
