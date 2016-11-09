@@ -1,8 +1,8 @@
 p = genpath('../toolbox');
 addpath(p);
 clear all;
-cd = '../../DATA/syntheticData/new/testCropped/';
-% cd = '../../DATA/dangerousFinal/test/';
+% cd = '../../DATA/syntheticData/new/testCropped/';
+cd = '../../DATA/dangerousFinal/test/';
 methodName = 'LdcfCaltech';
 D = load( ['../toolbox/detector/models/' methodName 'Detector.mat']);
 images = dir(fullfile(cd,'*.jpg'));
