@@ -37,8 +37,8 @@ detector=acfModify(detector,pModify);
 for i = 1:len
     fileName = images(i).name;
     in  = [cd '/' fileName];
-    i
-    in
+    disp(i);
+    disp([methodName '   ' in])
     I = imread(in);
     bboxes = acfDetect(I,detector);
     [~,nameNow,~] = fileparts(fileName);
