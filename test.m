@@ -2,17 +2,17 @@ p = genpath('../toolbox');
 addpath(p);
 clear all;
 % cd = '/home/intern/Desktop/ATOCAR/DATA/INRIAPerson/test/images/';
-cd = '../../DATA/syntheticData/new/testCropped/';
+cd = '../../DATA/dangerousFinal/test/';
 methodName = 'synAll';
 images = dir(fullfile(cd,'*.jpg'));
 len = size(images,1);
-outPath = ['result/' methodName '_synTest/imgResult/'];
+outPath = ['result/' methodName '_danTest/imgResult/'];
 if (exist(outPath,'dir')),
    rmdir(outPath,'s'); 
 end
 mkdir(outPath);
 
-bboutDir = ['result/' methodName '_synTest/bbout/'];
+bboutDir = ['result/' methodName '_danTest/bbout/'];
 if (exist(bboutDir,'dir')),
    rmdir(bboutDir,'s'); 
 end
