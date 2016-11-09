@@ -3,7 +3,8 @@ addpath(p);
 clear all;
 % cd = '/home/intern/Desktop/ATOCAR/DATA/INRIAPerson/test/images/';
 cd = '../../DATA/dangerousFinal/test/';
-methodName = 'synAll';
+methodName = 'LdcfCaltech';
+D = load( ['../toolbox/detector/models/' methodName 'Detector.mat']);
 images = dir(fullfile(cd,'*.jpg'));
 len = size(images,1);
 outPath = ['result/' methodName '_danTest/imgResult/'];
@@ -29,7 +30,7 @@ mkdir(bboutDir);
 %   'gtDir','/home/intern/Desktop/ATOCAR/DATA/INRIAPerson/test/images','pLoad',opts.pLoad,...
 %   'pModify',pModify,'reapply',0,'show',2);
 % load ./models/SyntheticOriginDetector.mat;
-D = load( ['models/' methodName 'Detector.mat']);
+
 detector = D.detector;
 pModify=struct('cascThr',-1,'cascCal',.025);
 detector=acfModify(detector,pModify);
