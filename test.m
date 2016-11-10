@@ -1,18 +1,19 @@
 p = genpath('../toolbox');
 addpath(p);
 clear all;
-% cd = '/home/intern/Desktop/ATOCAR/DATA/INRIAPerson/test/images/';
-cd = '../../DATA/dangerousFinal/allNowCropped';
-methodName = 'AcfCaltechPureOrigin';
+% cd = '../../DATA/syntheticData/new/testCropped/';
+cd = '../../DATA/dangerousFinal/test/';
+methodName = 'realTrain';
+D = load( ['./models/' methodName 'Detector.mat']);
 images = dir(fullfile(cd,'*.jpg'));
 len = size(images,1);
-outPath = ['result/' methodName 'all/imgResult/'];
+outPath = ['result/' methodName '_danTest/imgResult/'];
 if (exist(outPath,'dir')),
    rmdir(outPath,'s'); 
 end
 mkdir(outPath);
 
-bboutDir = ['result/' methodName 'all/bbout/'];
+bboutDir = ['result/' methodName '_danTest/bbout/'];
 if (exist(bboutDir,'dir')),
    rmdir(bboutDir,'s'); 
 end
@@ -29,14 +30,15 @@ mkdir(bboutDir);
 %   'gtDir','/home/intern/Desktop/ATOCAR/DATA/INRIAPerson/test/images','pLoad',opts.pLoad,...
 %   'pModify',pModify,'reapply',0,'show',2);
 % load ./models/SyntheticOriginDetector.mat;
-D = load( ['models/' methodName 'Detector.mat']);
+
 detector = D.detector;
 pModify=struct('cascThr',-1,'cascCal',.025);
 detector=acfModify(detector,pModify);
 for i = 1:len
     fileName = images(i).name;
-    fileName
     in  = [cd '/' fileName];
+    disp(i);
+    disp([methodName '   ' in])
     I = imread(in);
     bboxes = acfDetect(I,detector);
     [~,nameNow,~] = fileparts(fileName);
