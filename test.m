@@ -2,18 +2,18 @@ p = genpath('../toolbox');
 addpath(p);
 clear all;
 % cd = '../../DATA/syntheticData/new/testCropped/';
-cd = '../../DATA/dangerousFinal/test/';
-methodName = 'realTrain';
-D = load( ['./models/' methodName 'Detector.mat']);
+cd = '../../DATA/Caltech/Caltech/test/images/';
+methodName = 'LdcfCaltech';
+D = load( ['../toolbox/detector/models/' methodName 'Detector.mat']);
 images = dir(fullfile(cd,'*.jpg'));
 len = size(images,1);
-outPath = ['result/' methodName '_danTest/imgResult/'];
+outPath = ['result/' methodName '_caltechTest/imgResult/'];
 if (exist(outPath,'dir')),
    rmdir(outPath,'s'); 
 end
 mkdir(outPath);
 
-bboutDir = ['result/' methodName '_danTest/bbout/'];
+bboutDir = ['result/' methodName '_caltechTest/bbout/'];
 if (exist(bboutDir,'dir')),
    rmdir(bboutDir,'s'); 
 end
