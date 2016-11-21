@@ -5,11 +5,16 @@ addpath(p);
 clear all
 close all
 resDir = '../../DATA/Caltech/res/';
-resfiles = {'ev-caltech_keep_1.1_final.mat',...
-            'ev-Reasonable-SA-FastRCNN.mat',...
+resfiles = {'ev-Reasonable-ACF.mat',...
+            'ev-Reasonable-HOG.mat',...
+            'ev-Reasonable-VJ.mat',...
+            'ev-Reasonable-MT-DPM.mat',...
+            'ev-Reasonable-CCF.mat',...
+            'ev-Reasonable-TA-CNN.mat',...
+            'ev-Reasonable-Checkerboards.mat',...
             'ev-Reasonable-CompACT-Deep.mat',...
             'ev-rpn_origin.mat'};
-types = {'r-','b-','g-','c-'};
+types = {'g-','m-','k-','y','r-','c-','k--','b--','b-'};
 
 n = length(resfiles);
 assert(n == length(types));
@@ -24,7 +29,7 @@ for i = 1:n
     gts{i} = res{i}.R.gtr;
     dts{i} = res{i}.R.dtr;
 end
-
+names{n} = 'RPN+';
 yMin = 100;
 xMax = 0;
 for i = 1:n
@@ -35,9 +40,11 @@ for i = 1:n
     
     yMin=min(yMin,min(ys)); 
     xMax=max(xMax,max(xs));
-    xlabel('false positives per image','FontSize',14);
-    ylabel('miss rate','FontSize',14);
+   
 end
+xlabel('false positives per image','FontSize',18,'FontWeight','bold');
+ylabel('miss rate','FontSize',18,'FontWeight','bold');
+
 grid on
 yt=[.05 .1:.1:.5 .64 .8]; ytStr=int2str2(yt*100,2);
 for i=1:length(yt), ytStr{i}=['.' ytStr{i}]; end
@@ -45,7 +52,7 @@ set(gca,'XScale','log','YScale','log',...
         'YTick',[yt 1],'YTickLabel',[ytStr '1'],...
         'XMinorGrid','off','XMinorTic','off',...
         'YMinorGrid','off','YMinorTic','off');
-title('ROC');
+title('ROC of Caltech','FontSize',14);
 xlim([0 xMax]);
 ylim([yMin, 1]);
 legend(names,'Location','sw');
