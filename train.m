@@ -1,11 +1,3 @@
-% Demo for aggregate channel features object detector on Caltech dataset.
-%
-% See also acfReadme.m
-%
-% Piotr's Computer Vision Matlab Toolbox      Version 3.40
-% Copyright 2014 Piotr Dollar.  [pdollar-at-gmail.com]
-% Licensed under the Simplified BSD License [see external/bsd.txt]
-
 %% extract training and testing images and ground truth
 
 p = genpath('../toolbox');
@@ -17,6 +9,7 @@ clear all;
 fid1=fopen('configure/train.cfg');
 
 dataDir=fgetl(fid1);%'../../DATA/dangerous/';
+
 % testDir = fgetl(fid1);%'../../DATA/Caltech/';
 modelName=fgetl(fid1);
 trainLoad = fgetl(fid1);%'configure/trainFileLoad.cfg'
@@ -29,7 +22,7 @@ fclose(fid1);
 %   dbExtract([dataDir type],1,skip);
 % end
 
-%% set up opts for training detector (see acfTrain)
+%% set up opts for training detector (see acfTrains)
 if(1),
 opts=acfTrain(); 
 opts.modelDs=[50 20.5]; 
@@ -49,18 +42,6 @@ opts.pPyramid.pChns.shrink=2;
 opts.name=modelName;%'models/dangerous';
 pLoad={'lbls',{'person'},'ilbls',{'people'},'squarify',{3,.41}};
 opts.pLoad = [pLoad 'hRng',[50 inf], 'vRng',[1 1] ];
-% opts=acfTrain(); 
-% opts.modelDs=[100 100]; 
-% opts.modelDsPad=[128 128];
-% opts.posGtDir=[dataDir 'train' '/annotations']; 
-% opts.nWeak=[32 128 512 2048];
-% opts.posImgDir=[dataDir 'train' '/images']; 
-% opts.pJitter=struct('flip',1);
-% opts.nNeg=25000; 
-% opts.nAccNeg=50000;
-% opts.pBoost.pTree.fracFtrs=1/16;
-% opts.pLoad={'squarify',{3,.41}};
-% opts.name='models/SynthticTest';
 
 %% train detector (see acfTrain)
 detector = acfTrain( opts );
@@ -80,12 +61,3 @@ end
 pModify=struct('cascThr',-1,'cascCal',.025);
 detector=acfModify(detector,pModify);
 
-% imgNms=bbGt('getFiles',{[testDir 'test/images']});
-% for i = 1:size(imgNms,2)
-% I=imread(imgNms{i}); 
-% tic, bbs=acfDetect(I,detector); toc
-% figure(i); 
-% im(I); 
-% bbApply('draw',bbs); 
-% pause(.1);
-% end
