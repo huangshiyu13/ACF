@@ -4,7 +4,8 @@ p = genpath('../../DATA/code3.2.1');
 addpath(p);
 clear all;
 
-load models/ImpAndRealDetector.mat
+% load models/ImpAndRealDetector.mat
+load models/synAllDetector.mat
 
 fid1=fopen('configure/train.cfg');
 dataDir=fgetl(fid1);
