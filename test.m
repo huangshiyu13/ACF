@@ -4,7 +4,7 @@ clear all;
 % cd = '../../DATA/syntheticData/new/testCropped/';
 % cd = '../../DATA/Caltech/Caltech/test/images/';
 cd = '../../DATA/dangerousFinal/test/';
-methodName = 'Imp';
+methodName = 'fineReal';
 D = load( ['./models/' methodName 'Detector.mat']);
 images = dir(fullfile(cd,'*.jpg'));
 len = size(images,1);
